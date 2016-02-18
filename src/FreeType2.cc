@@ -22,7 +22,7 @@ NAN_MODULE_INIT(FreeType2::Init) {
   Nan::SetMethod(target, "Get_Kerning", Get_Kerning);
   // Nan::SetMethod(target, "Get_Track_Kerning", Get_Track_Kerning);
   // Nan::SetMethod(target, "Get_Glyph_Name", Get_Glyph_Name);
-  // Nan::SetMethod(target, "Get_Postscript_Name", Get_Postscript_Name);
+  Nan::SetMethod(target, "Get_Postscript_Name", Get_Postscript_Name);
   Nan::SetMethod(target, "Select_Charmap", Select_Charmap);
   Nan::SetMethod(target, "Set_Charmap", Set_Charmap);
   Nan::SetMethod(target, "Get_Charmap_Index", Get_Charmap_Index);
@@ -264,6 +264,18 @@ NAN_METHOD(FreeType2::Get_Kerning) {
   }
 
   info.GetReturnValue().Set(Nan::New((int32_t)err));
+}
+
+NAN_METHOD(FreeType2::Get_Postscript_Name) {
+  FontFace* fontFace = node::ObjectWrap::Unwrap<FontFace>(v8::Local<v8::Object>::Cast(info[0]));
+  const char* postscriptName = FT_Get_Postscript_Name(
+    fontFace->ftFace
+  );
+  if (postscriptName) {
+    info.GetReturnValue().Set(Nan::New(postscriptName).ToLocalChecked());
+  } else {
+    info.GetReturnValue().Set(Nan::Null());
+  }
 }
 
 NAN_METHOD(FreeType2::Select_Charmap) {

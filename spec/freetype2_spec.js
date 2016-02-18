@@ -95,4 +95,17 @@ describe('freetype2', function() {
       expect(kerning.y).toBe(0);
     });
   });
+
+  describe('#Get_Postscript_Name', function() {
+    it('returns the correct postscript name', function() {
+      var face = {};
+      var err = ft.New_Memory_Face(buffer, 0, face);
+      face = face.face;
+      var postscriptName = ft.Get_Postscript_Name(
+        face
+      );
+      expect(err).toBe(0);
+      expect(postscriptName).toBe("OpenBaskerville0.0.53");
+    });
+  });
 });

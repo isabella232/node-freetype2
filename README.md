@@ -47,6 +47,7 @@ ft.Get_Charmap_Index(face);
 ft.Get_Char_Index(face, charcode);
 ft.Get_First_Char(face, agindex);
 ft.Get_Next_Char(face, char_code, agindex);
+ft.Get_Postscript_Name(face);
 ```
 
 See [FreeType documentation](http://www.freetype.org/freetype2/docs/reference/ft2-index.html) for more info.
@@ -57,7 +58,6 @@ See [FreeType documentation](http://www.freetype.org/freetype2/docs/reference/ft
 - Implement following methods:
     - `ft.Get_Track_Kerning`
     - `ft.Get_Glyph_Name`
-    - `ft.Get_Postscript_Name`
     - `ft.Get_Name_Index`
     - `ft.Get_SubGlyph_Info`
 

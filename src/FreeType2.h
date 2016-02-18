@@ -27,7 +27,7 @@ class FreeType2 : public node::ObjectWrap {
     static NAN_METHOD(Get_Kerning);
     // static NAN_METHOD(Get_Track_Kerning);
     // static NAN_METHOD(Get_Glyph_Name);
-    // static NAN_METHOD(Get_Postscript_Name);
+    static NAN_METHOD(Get_Postscript_Name);
     static NAN_METHOD(Select_Charmap);
     static NAN_METHOD(Set_Charmap);
     static NAN_METHOD(Get_Charmap_Index);
